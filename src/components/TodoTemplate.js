@@ -20,7 +20,9 @@ const TodoTemplateBlock = styled.div`
 
 function TodoTemplate({children}) {
     return (
-        <TodoTemplateBlock>{children}</TodoTemplateBlock>
+        <TodoTemplateBlock>
+            {children}
+        </TodoTemplateBlock>
     )
 }
 
