@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from "moment";
 import 'moment/locale/ko';
+import {useTodoState} from "./TodoContext";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -28,13 +29,15 @@ const TodoHeadBlock = styled.div`
 `;
 
 function TodoHead(){
+    const todos = useTodoState();
+    const undoneTasks = todos.filter(todo => !todo.done);
     const now = moment().format('YYYY년 M월 D일');
     const day = moment().format('dddd');
     return (
         <TodoHeadBlock>
             <h1>{now}</h1>
             <div className="day">{day}</div>
-            <div className="tasks-left">할 일 2개 남음</div>
+            <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
         </TodoHeadBlock>
     )
 }
